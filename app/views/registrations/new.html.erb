@@ -1,0 +1,30 @@
+<div class="col-3 m-auto">
+  <h2>Sign Up Form</h2>
+  <%= form_with model: @user, url: sign_up_path, local: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:email).each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:password).each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mb-3">
+      <%= form.submit 'Sign Up', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+</div>
