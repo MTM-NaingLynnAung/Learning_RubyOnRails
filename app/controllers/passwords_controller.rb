@@ -8,7 +8,7 @@ before_action :require_user_logged_in!
     if Current.user.update(password_params)
       redirect_to root_path, notice: 'Password Updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end 
   end
 

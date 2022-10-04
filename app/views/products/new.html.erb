@@ -1,0 +1,45 @@
+<div class="col-3 m-auto">
+  <h2 class="mt-4"> Product Create </h2>
+  <%= form_with model: @product, url: products_path, local: true do |form| %>
+    <div class="form-group mb-3">
+      <% if @product.errors[:name].any? %>
+        <%= form.label :name, class: 'required text-danger' %>
+        <%= form.text_field :name, class: 'form-control border-danger shadow-none' %>
+        <% @product.errors.full_messages_for(:name).each do |message| %>
+          <div class="text-danger"><%= message %></div>
+        <% end %>
+      <% else %>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control' %>
+      <% end %>
+    </div>
+    <div class="form-group mb-3">
+      <% if @product.errors[:description].any? %>
+        <%= form.label :description, class: 'required text-danger' %>
+        <%= form.text_area :description, class: 'form-control border-danger shadow-none' %>
+        <% @product.errors.full_messages_for(:description).each do |message| %>
+          <div class="text-danger"><%= message %></div>
+        <% end %>
+      <% else %>
+        <%= form.label :description %>
+        <%= form.text_area :description, class: 'form-control' %>
+      <% end %>
+    </div>
+    <div class="form-group mb-3">
+      <% if @product.errors[:price].any? %>
+        <%= form.label :price, class: 'required text-danger' %>
+        <%= form.number_field :price, class: 'form-control border-danger shadow-none' %>
+        <% @product.errors.full_messages_for(:price).each do |message| %>
+          <div class="text-danger"><%= message %></div>
+        <% end %>
+      <% else %>  
+        <%= form.label :price %>
+        <%= form.number_field :price, class: 'form-control' %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Back', products_path ,class: 'btn btn-dark' %>
+      <%= form.submit 'Create', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
