@@ -4,19 +4,21 @@ class ProductsController < ApplicationController
     @products = Product.order("id DESC")
   end
   def new
-    @product = Product.new
+    @product = ProductService.new
   end
   def show
     
   end
   def create
-    @product = Product.new(product_params)
-    if @product.save
+    @product = ProductService.create(product_params)
+    isSave = ProductService.save(@product)
+    if isSave
       redirect_to products_path, notice: 'Product created successfully'
     else
       render :new , status: :unprocessable_entity
     end
   end
+
   def edit
     
   end
