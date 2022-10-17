@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @product = ProductService.create(product_params)
     isSave = ProductService.save(@product)
     if isSave
-      redirect_to products_path, notice: 'Product created successfully'
+      redirect_to products_path, success: 'Product created successfully'
     else
       render :new , status: :unprocessable_entity
     end
@@ -25,9 +25,9 @@ class ProductsController < ApplicationController
   def update
     
     if @product.update(product_params)
-      redirect_to products_path, notice: 'Product updated successfully'
+      redirect_to products_path, info: 'Product updated successfully'
     else
-      flash[:alert] = 'Failed to update product'
+      flash[:danger] = 'Failed to update product'
       render :edit
     end
   end
@@ -35,9 +35,9 @@ class ProductsController < ApplicationController
   def destroy
     
     if @product.delete
-      redirect_to products_path, notice: 'Product deleted successfully'
+      redirect_to products_path, success: 'Product deleted successfully'
     else
-      flash[:alert] = 'Failed to delete'
+      flash[:danger] = 'Failed to delete'
       render :destroy
     end
   end
