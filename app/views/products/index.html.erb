@@ -9,6 +9,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Price</th>
+      <th>Image</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -19,6 +20,9 @@
       <td><%= product.name %></td>
       <td><%= product.description %></td>
       <td><%= product.price %> </td>
+      <td>
+      <%= image_tag product.image_url, style: 'width:70px;height:70px;' if product.image %>
+      </td>
       <td>
         <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
         <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger'  %>

@@ -37,9 +37,17 @@
         <%= form.number_field :price, class: 'form-control' %>
       <% end %>
     </div>
+    <div class="form-group">
+      <%= form.label :image %>
+      <%= image_tag @product.image.present? ? @product.image.url : '' , id:'img_prev', style: 'width:100px;height:100px'  %>
+      <%= form.hidden_field :image, value: form.object.cached_image_data %>
+      <%= form.file_field :image, id: 'profile' %>
+    </div>
     <div class="d-flex justify-content-between">
       <%= link_to 'Back', products_path ,class: 'btn btn-dark' %>
       <%= form.submit 'Create', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
+
+    <%= javascript_pack_tag 'user/_form' %>
