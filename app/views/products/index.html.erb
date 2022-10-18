@@ -21,7 +21,11 @@
       <td><%= product.description %></td>
       <td><%= product.price %> </td>
       <td>
-      <%= image_tag product.image_url, style: 'width:70px;height:70px;' if product.image %>
+      <% if product.image.present? %>
+        <%= image_tag product.image_url, style: 'width:70px;height:70px;' %>
+      <% else %>
+        <%= image_tag 'default.png', style: 'width:70px;height:70px;' %>
+      <% end %>
       </td>
       <td>
         <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
