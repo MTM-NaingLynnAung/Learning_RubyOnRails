@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
+  include Pagy::Backend
   before_action :set_product 
   def index
-    @products = Product.order("id DESC")
+    @pagy, @products = pagy(Product.order("id DESC"), items: 5)
   end
   def new
     @product = ProductService.new
